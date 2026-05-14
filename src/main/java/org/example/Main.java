@@ -9,22 +9,19 @@ import org.hibernate.cfg.Configuration;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Student s = new Student();
-//        s.setRollNo(1);
-//        s.setAge(21);
-//        s.setSname("sagar");
+        Aliean s=new Aliean();
+        s.setAid(1);
+        s.setAname("bhairaava");
+        s.setTech("java");
         SessionFactory sf=new Configuration()
-                .addAnnotatedClass(org.example.Student.class)
+                .addAnnotatedClass(org.example.Aliean.class)
                 .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
                 //cfg.buildSessionFactory();
         Session s1=sf.openSession();
-        s=s1.find(Student.class,4);
         Transaction trans=s1.beginTransaction();
-//        s1.persist(s);
-//        s1.find(Student.class,2);
-//        s1.merge(s);
-        s1.remove(s);
+        s1.persist(s);
+
         trans.commit();
         s1.close();
         sf.close();
