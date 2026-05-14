@@ -19,9 +19,10 @@ public class Main {
                 .buildSessionFactory();
                 //cfg.buildSessionFactory();
         Session s1=sf.openSession();
-        Transaction trans=s1.beginTransaction();
-        s1.persist(s);
-        trans.commit();
+        //Transaction trans=s1.beginTransaction();
+        //s1.persist(s);
+        s1.find(Student.class,2);
+        //trans.commit();
         s1.close();
         sf.close();
         System.out.println(s);
