@@ -1,9 +1,6 @@
 package org.example;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="aliean_table")
@@ -13,6 +10,7 @@ public class Aliean {
     private  int aid;
     @Column(name="aliean_name")
     private String aname;
+    @Transient
     private String tech;
 
     public int getAid() {
