@@ -10,19 +10,22 @@ import org.hibernate.cfg.Configuration;
 public class Main {
     public static void main(String[] args) {
         Student s = new Student();
-        s.setRollNo(3);
-        s.setAge(39);
-        s.setSname("sri ram");
+//        s.setRollNo(1);
+//        s.setAge(21);
+//        s.setSname("sagar");
         SessionFactory sf=new Configuration()
                 .addAnnotatedClass(org.example.Student.class)
                 .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
                 //cfg.buildSessionFactory();
         Session s1=sf.openSession();
-        //Transaction trans=s1.beginTransaction();
-        //s1.persist(s);
-        s1.find(Student.class,2);
-        //trans.commit();
+        s=s1.find(Student.class,4);
+        Transaction trans=s1.beginTransaction();
+//        s1.persist(s);
+//        s1.find(Student.class,2);
+//        s1.merge(s);
+        s1.remove(s);
+        trans.commit();
         s1.close();
         sf.close();
         System.out.println(s);
