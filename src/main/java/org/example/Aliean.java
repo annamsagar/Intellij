@@ -2,16 +2,17 @@ package org.example;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name="aliean_table")
 public class Aliean {
 
     @Id
     private  int aid;
-    @Column(name="aliean_name")
     private String aname;
-    @Transient
     private String tech;
+    @ManyToMany
+    private List<Laptop> laptops;
 
     public int getAid() {
         return aid;
@@ -37,12 +38,25 @@ public class Aliean {
         this.tech = tech;
     }
 
+    public List<Laptop> getLaptop() {
+        return laptops;
+    }
+
     @Override
     public String toString() {
         return "Aliean{" +
                 "aid=" + aid +
                 ", aname='" + aname + '\'' +
                 ", tech='" + tech + '\'' +
+                ", laptop=" + laptops +
                 '}';
+    }
+
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
     }
 }
