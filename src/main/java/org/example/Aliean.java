@@ -11,7 +11,7 @@ public class Aliean {
     private  int aid;
     private String aname;
     private String tech;
-    @ManyToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Laptop> laptops;
 
     public int getAid() {

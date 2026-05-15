@@ -12,13 +12,6 @@ public class Laptop {
     @Id
     private int lid;
 
-    @ManyToMany(mappedBy = "laptops")
-    private List<Aliean> aid;
-
-    public void setAid(List<Aliean> aid) {
-        this.aid = aid;
-    }
-
     public int getLid() {
         return lid;
     }
