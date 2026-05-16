@@ -12,11 +12,7 @@ import java.util.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Laptop lap = new Laptop();
-        lap.setBrand("Asus");
-        lap.setModel("strix");
-        lap.setRam(64);
-        lap.setLid(4);
+
 
 
         SessionFactory sf=new Configuration()
@@ -25,12 +21,16 @@ public class Main {
                 .buildSessionFactory();
                 //cfg.buildSessionFactory();
         Session s1=sf.openSession();
-        Query query=s1.createQuery("from Laptop where brand='Asus' ",Laptop.class);
-        List<Laptop> l2=query.getResultList();
-        for(Laptop data:l2){
-            System.out.println(data.getBrand() +" "+data.getModel() +" "+data.getRam() +" "+data.getLid());
-        }
+
+        Laptop l1=s1.find(Laptop.class,1);
+        Laptop l2=s1.find(Laptop.class,2);
+        System.out.println(l1);
+        System.out.println(l2);
+
         s1.close();
+        Session s2=sf.openSession();
+        Laptop l3=s2.find(Laptop.class,3);
+        System.out.println(l3);
         sf.close();
     }
 }
